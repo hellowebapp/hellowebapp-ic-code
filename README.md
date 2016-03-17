@@ -16,9 +16,9 @@ here:
 ## Next chapter
 
 Next chapter:
-[https://github.com/hellowebapp/HelloWebApp-IC-Code/tree/chapter-11](https://github.com/hellowebapp/HelloWebApp-IC-Code/tree/chapter-11)
+[https://github.com/hellowebapp/HelloWebApp-IC-Code/tree/chapter-12](https://github.com/hellowebapp/HelloWebApp-IC-Code/tree/chapter-12)
 
 # License
 
 The code in this repository is licensed under the terms of the MIT license. This
-does not apply to the content in the Hello Web App books, which are copyrighted. :) 
+does not apply to the content in the Hello Web App books, which are copyrighted. :)

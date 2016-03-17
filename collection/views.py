@@ -21,9 +21,13 @@ def thing_detail(request, slug):
     # grab the object...
     thing = Thing.objects.get(slug=slug)
 
+    # new line! grab all the object's social accounts
+    social_accounts = thing.social_accounts.all()
+
     # and pass to the template
     return render(request, 'things/thing_detail.html', {
         'thing': thing,
+        'social_accounts': social_accounts,
     })
 
 

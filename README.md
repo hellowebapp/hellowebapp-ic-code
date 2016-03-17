@@ -1,5 +1,5 @@
 Hello Web App: Intermediate Concept's Code
-====================
+==========================================
 
 This is the repository for the code for Hello Web App: Intermediate Concepts.
 Change chapters by switching branches (button "branch:master") above - code will
@@ -13,7 +13,12 @@ Our main repository with installation instructions and other tips can be found
 here:
 [https://github.com/hellowebapp/hellowebapp](https://github.com/hellowebapp/hellowebapp)
 
+## Next chapter
+
+Next chapter:
+[https://github.com/hellowebapp/HelloWebApp-IC-Code/tree/chapter-2](https://github.com/hellowebapp/HelloWebApp-IC-Code/tree/chapter-2)
+
 # License
 
 The code in this repository is licensed under the terms of the MIT license. This
-does not apply to the content in the Hello Web App book, which is copyrighted. :)
+does not apply to the content in the Hello Web App books, which are copyrighted. :)

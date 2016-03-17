@@ -2,9 +2,17 @@ from django.urls import path, include
 from django.contrib import admin
 from django.contrib.auth.views import PasswordChangeView, PasswordChangeDoneView, PasswordResetView, PasswordResetDoneView, PasswordResetConfirmView, PasswordResetCompleteView
 from django.views.generic import TemplateView, RedirectView
+from django.contrib.sitemaps.views import sitemap
 
 from collection.backends import MyRegistrationView
 from collection import views
+from collection.sitemap import ThingSitemap, StaticSitemap, HomepageSitemap
+
+sitemaps = {
+    'things': ThingSitemap,
+    'static': StaticSitemap,
+    'homepage': HomepageSitemap,
+}
 
 
 urlpatterns = [
@@ -40,6 +48,9 @@ urlpatterns = [
         MyRegistrationView.as_view(), name='registration_register'),
     path('accounts/create_thing/',
         views.create_thing, name='registration_create_thing'),
+
+    path('sitemap.xml', sitemap, {'sitemaps': sitemaps},
+        name='django.contrib.sitemaps.views.sitemap'),
 
     path('accounts/', include('registration.backends.simple.urls')),
     path('admin/', include(admin.site.urls)),

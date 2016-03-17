@@ -13,12 +13,7 @@ Our main repository with installation instructions and other tips can be found
 here:
 [https://github.com/hellowebapp/hellowebapp](https://github.com/hellowebapp/hellowebapp)
 
-## Next chapter
-
-Next chapter:
-[https://github.com/hellowebapp/HelloWebApp-IC-Code/tree/chapter-13](https://github.com/hellowebapp/HelloWebApp-IC-Code/tree/chapter-13)
-
 # License
 
 The code in this repository is licensed under the terms of the MIT license. This
-does not apply to the content in the Hello Web App books, which are copyrighted. :) 
+does not apply to the content in the Hello Web App books, which are copyrighted. :)

@@ -39,7 +39,7 @@ urlpatterns = [
         {'template_name': 'registration/password_reset_confirm.html'}, name="password_reset_confirm"),
     path('accounts/password/done/', password_reset_complete,
         {'template_name': 'registration/password_reset_complete.html'},
-        name="password_reset_complete"),
+        name="password_reset_complete"), 
 
     path('accounts/register/',
         MyRegistrationView.as_view(), name='registration_register'),

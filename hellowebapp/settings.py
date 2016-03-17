@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sitemaps',
     'registration',
 ]
 
@@ -135,5 +136,10 @@ EMAIL_HOST_USER = ''
 EMAIL_HOST_PASSWORD = '' 
 EMAIL_USE_TLS = False 
 EMAIL_PORT = 1025
+
+SERVER_EMAIL = 'app_email@mydomain.com'
+ADMINS = [
+    ('your name', 'me@mydomain.com'),
+]
 
 LOGIN_REDIRECT_URL = "home"

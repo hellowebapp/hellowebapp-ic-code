@@ -4,7 +4,15 @@ from django.contrib.auth.models import User
 from django.db import models
 
 
-class Thing(models.Model):
+class Timestamp(models.Model):
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        abstract = True
+
+
+class Thing(Timestamp):
     name = models.CharField(max_length=255)
     description = models.TextField()
     slug = models.SlugField(unique=True)
@@ -13,8 +21,12 @@ class Thing(models.Model):
     def __unicode__(self):
         return self.name
 
+    # new helper method
+    def get_absolute_url(self):
+        return "/things/%s/" % self.slug
 
-class Social(models.Model):
+
+class Social(Timestamp):
     SOCIAL_TYPES = (
         ('twitter', 'Twitter'),
         ('facebook', 'Facebook'),

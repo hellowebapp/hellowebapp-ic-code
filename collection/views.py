@@ -5,6 +5,7 @@ from django.template.defaultfilters import slugify
 from django.template.loader import get_template 
 from django.core.mail import EmailMessage
 from django.template import Context
+from django.core.mail import mail_admins
 
 from collection.forms import ThingForm, ContactForm
 from collection.models import Thing
@@ -12,6 +13,10 @@ from collection.models import Thing
 
 def index(request):
     things = Thing.objects.all()
+
+    # uncomment below to test the mail_admins feature!
+    # mail_admins("Our subject line", "Our content")
+
     return render(request, 'index.html', {
         'things': things,
     })

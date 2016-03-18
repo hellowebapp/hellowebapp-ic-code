@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %}
+    Edit {{ thing.name }}'s Images - {{ block.super }}
+{% endblock %}
+
+{% block content %}
+    <h1>Edit {{ thing.name }}'s Images</h1>
+    <h2>Uploaded images</h2>
+
+    {% for upload in uploads %}
+    <img src="{{ upload.image.url }}" alt="" />
+    <a href="{% url 'delete_upload' id=upload.id %}">Delete</a>
+    {% endfor %}
+
+    <h2>Upload a new image</h2>
+    <form role="form" action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Submit" />
+    </form>
+{% endblock %}

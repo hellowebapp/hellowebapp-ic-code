@@ -3,3 +3,4 @@ django-registration-redux==2.5
 pytz==2017.3
 hellowebapp-deploy
 psycopg2==2.7.3.2
+Pillow==5.1.0

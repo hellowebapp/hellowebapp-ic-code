@@ -1,4 +1,5 @@
 from __future__ import unicode_literals
+from PIL import Image
 
 from django.contrib.auth.models import User
 from django.db import models
@@ -50,3 +51,18 @@ class Upload(models.Model):
     thing = models.ForeignKey(Thing,
         on_delete=models.CASCADE, related_name="uploads")
     image = models.ImageField(upload_to=get_image_path)
+
+    # add this bit in after our model
+    def save(self, *args, **kwargs):
+        # this is required when you override save functions
+        super(Upload, self).save(*args, **kwargs)
+
+        # our new code
+        if self.image:
+            image = Image.open(self.image)
+            i_width, i_height = image.size
+            max_size = (1000,1000)
+
+        if i_width > 1000:
+            image.thumbnail(max_size, Image.ANTIALIAS)
+            image.save(self.image.path)

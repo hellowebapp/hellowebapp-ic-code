@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.conf.urls import url, include
 from django.contrib import admin
 from django.contrib.auth.views import password_reset, password_reset_done, password_reset_confirm, password_reset_complete
@@ -26,6 +27,10 @@ urlpatterns = [
         views.thing_detail, name='thing_detail'),
     url(r'^things/(?P<slug>[-\w]+)/edit/$', 
         views.edit_thing, name='edit_thing'),
+
+    url(r'^things/(?P<slug>[-\w]+)/edit/images/$',
+        views.edit_thing_uploads, name='edit_thing_uploads'),
+    url(r'^delete/(?P<id>[-\w]+)/$', views.delete_upload, name='delete_upload'),
 
     url(r'^browse/$', RedirectView.as_view(pattern_name='browse')),
     url(r'^browse/name/$', 
@@ -60,3 +65,10 @@ urlpatterns = [
     url(r'^accounts/', include('registration.backends.simple.urls')),
     url(r'^admin/', include(admin.site.urls)),
 ]
+
+if settings.DEBUG: 
+    urlpatterns += [
+        url(r'^media/(?P<path>.*)$', 'django.views.static.serve', { 
+            'document_root': settings.MEDIA_ROOT,
+        }),
+    ]

@@ -1,7 +1,7 @@
 from django import forms
 from django.forms import ModelForm
 
-from collection.models import Thing
+from collection.models import Thing, Upload
 
 
 class ThingForm(ModelForm):
@@ -22,3 +22,8 @@ class ContactForm(forms.Form):
         self.fields['contact_name'].label = "Your name:" 
         self.fields['contact_email'].label = "Your email:" 
         self.fields['content'].label = "What do you want to say?"
+
+class ThingUploadForm(ModelForm):
+    class Meta:
+        model = Upload
+        fields = ('image',)

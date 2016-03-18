@@ -19,6 +19,11 @@
     </ul>
     {% endif %}
 
+    {% comment %} our new loop {% endcomment %}
+    {% for upload in uploads %}
+    <img src="{{ upload.image.url }}" alt="" />
+    {% endfor %}
+
     {% if user.username == thing.user.username %}
         <p>
             <a href="{% url 'edit_thing' slug=thing.slug %}">

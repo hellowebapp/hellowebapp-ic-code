@@ -2,6 +2,7 @@
 db.sqlite3
 venv
 *.pyc
+node_modules
 staticfiles
 .DS_STORE
 *.zip

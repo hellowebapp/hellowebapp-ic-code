@@ -32,6 +32,8 @@ urlpatterns = [
         views.edit_thing_uploads, name='edit_thing_uploads'),
     url(r'^delete/(?P<id>[-\w]+)/$', views.delete_upload, name='delete_upload'),
 
+    url(r'^things/(?P<slug>[-\w]+)/edit/email/$', views.edit_email, name='edit_email'),
+
     url(r'^browse/$', RedirectView.as_view(pattern_name='browse')),
     url(r'^browse/name/$', 
         views.browse_by_name, name='browse'),

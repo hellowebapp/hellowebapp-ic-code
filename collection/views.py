@@ -8,7 +8,7 @@ from django.template import Context
 from django.core.mail import mail_admins
 from django.contrib import messages
 
-from collection.forms import ThingForm, ContactForm, ThingUploadForm
+from collection.forms import ThingForm, ContactForm, ThingUploadForm, EditEmailForm
 from collection.models import Thing, Upload
 
 
@@ -211,3 +211,24 @@ def delete_upload(request, id):
 
     # refresh the edit page
     return redirect('edit_thing_uploads', slug=upload.thing.slug)
+
+
+# our new view
+@login_required
+def edit_email(request, slug):
+    user = request.user
+    form_class = EditEmailForm
+
+    if request.method == 'POST':
+        form = form_class(data=request.POST, instance=user) 
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Email address updated.')
+            return redirect('thing_detail', slug=slug)
+
+    else:
+        form = form_class(instance=user)
+
+    return render(request, 'things/edit_email.html', {
+        'form': form,
+    })

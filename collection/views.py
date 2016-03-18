@@ -6,6 +6,7 @@ from django.template.loader import get_template
 from django.core.mail import EmailMessage
 from django.template import Context
 from django.core.mail import mail_admins
+from django.contrib import messages
 
 from collection.forms import ThingForm, ContactForm, ThingUploadForm
 from collection.models import Thing, Upload
@@ -57,6 +58,9 @@ def edit_thing(request, slug):
         if form.is_valid():
             # save the new data
             form.save()
+
+            # our new message!
+            messages.success(request, 'Thing details updated.')
             return redirect('thing_detail', slug=thing.slug)
 
     # otherwise just create the form

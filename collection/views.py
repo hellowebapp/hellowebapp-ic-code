@@ -1,3 +1,5 @@
+import stripe
+
 from django.contrib.auth.decorators import login_required
 from django.http import Http404
 from django.shortcuts import render, redirect
@@ -7,9 +9,12 @@ from django.core.mail import EmailMessage
 from django.template import Context
 from django.core.mail import mail_admins
 from django.contrib import messages
+from django.conf import settings
 
 from collection.forms import ThingForm, ContactForm, ThingUploadForm, EditEmailForm
 from collection.models import Thing, Upload
+
+stripe.api_key = settings.STRIPE_SECRET
 
 
 def index(request):
@@ -71,6 +76,7 @@ def edit_thing(request, slug):
     return render(request, 'things/edit_thing.html', {
         'thing': thing,
         'form': form,
+        'key': settings.STRIPE_PUBLISHABLE,
     })
 
 
@@ -232,3 +238,57 @@ def edit_email(request, slug):
     return render(request, 'things/edit_email.html', {
         'form': form,
     })
+
+
+# our new view
+@login_required
+def charge(request):
+    # grab the logged in user, and the object the user "owns"
+    user = request.user
+    thing = Thing.objects.get(user=user)
+
+    if request.method != "POST":
+        # we only want to handle POST requests here, go back
+        return redirect('edit_thing', slug=thing.slug)
+
+    # check to make sure we have the proper response
+    # from Stripe
+    if not 'stripeToken' in request.POST:
+        # the response from Stripe doesn't have a token, abort
+        messages.error(request, 'Something went wrong!')
+        return redirect('edit_thing', slug=thing.slug)
+
+    try:
+        # create a Stripe customer
+        customer = stripe.Customer.create(
+            email=request.POST['stripeEmail'],
+            source=request.POST['stripeToken'],
+            # our new plan!
+            plan="monthly",
+        )
+    except stripe.StripeError as e:
+        msg = "Stripe payment error: %s" % e
+        messages.error(request, msg)
+        mail_admins("Error on App", msg)
+        return redirect('edit_thing', slug=thing.slug)
+
+    # set the "upgraded" field to True and save the ID
+    thing.upgraded = True
+    thing.stripe_id = customer.id
+    thing.save()
+
+    """ our commented out code from before, no longer needed
+    # set the amount to charge, in cents
+    amount = 500
+
+    # charge the customer!
+    charge = stripe.Charge.create(
+        customer=customer.id,
+        amount=amount,
+        currency='usd',
+        description='My one-time charge',
+    )
+    """
+
+    messages.success(request, 'Upgraded your account!')
+    return redirect('edit_thing', slug=thing.slug)

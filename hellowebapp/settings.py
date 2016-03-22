@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.sitemaps',
     'registration',
     'rest_framework',
+    'debug_toolbar',
 ]
 
 MIDDLEWARE_CLASSES = [

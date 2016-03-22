@@ -23,7 +23,7 @@ stripe.api_key = settings.STRIPE_SECRET
 
 
 def index(request):
-    things = Thing.objects.all()
+    things = Thing.objects.prefetch_related('social_accounts').all()
 
     # uncomment below to test the mail_admins feature!
     # mail_admins("Our subject line", "Our content")

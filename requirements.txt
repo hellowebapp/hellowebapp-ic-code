@@ -6,3 +6,4 @@ psycopg2==2.6
 Pillow==5.1.0
 libsass==0.10.1
 stripe==1.31.0
+djangorestframework==3.3.3

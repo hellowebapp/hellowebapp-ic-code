@@ -28,6 +28,11 @@ def index(request):
     # uncomment below to test the mail_admins feature!
     # mail_admins("Our subject line", "Our content")
 
+    # uncomment below to test sessions!
+    # request.session["thing"] = "This thing"
+    # thing = request.session["thing"]
+    # print thing
+
     return render(request, 'index.html', {
         'things': things,
     })

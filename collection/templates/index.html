@@ -11,5 +11,12 @@
             </a>
         </h2>
         <p>{{ thing.description }}</p>
+        {% if thing.social_accounts %}
+        <ul>
+            {% for account in thing.social_accounts.all %} 
+            <li>{{ account.network|title }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
     {% endfor %}
 {% endblock content %}

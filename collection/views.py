@@ -21,6 +21,8 @@ from collection.serializers import ThingSerializer
 
 stripe.api_key = settings.STRIPE_SECRET
 
+stripe.api_key = settings.STRIPE_SECRET
+
 
 def index(request):
     things = Thing.objects.prefetch_related('social_accounts').all()

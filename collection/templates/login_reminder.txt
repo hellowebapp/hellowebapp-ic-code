@@ -1,0 +1,7 @@
+Hi {{ username }}!
+
+We noticed it's been awhile since you logged in. Is there anything we can help 
+you with? Feel free to respond to this email and let us know how we can improve!
+
+Cheers,
+-The App Team

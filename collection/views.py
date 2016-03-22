@@ -11,8 +11,13 @@ from django.core.mail import mail_admins
 from django.contrib import messages
 from django.conf import settings
 
+from rest_framework import status
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+
 from collection.forms import ThingForm, ContactForm, ThingUploadForm, EditEmailForm
 from collection.models import Thing, Upload
+from collection.serializers import ThingSerializer
 
 stripe.api_key = settings.STRIPE_SECRET
 
@@ -293,3 +298,30 @@ def charge(request):
 
     messages.success(request, 'Upgraded your account!')
     return redirect('edit_thing', slug=thing.slug)
+
+
+# add your new view
+@api_view(['GET'])
+def api_thing_list(request):
+    """
+    List all things
+    """
+    if request.method == 'GET':
+        things = Thing.objects.all()
+        serializer = ThingSerializer(things, many=True)
+        return Response(serializer.data)
+
+
+@api_view(['GET'])
+def api_thing_detail(request, id):
+    """
+    Get a specific thing
+    """
+    try:
+        thing = Thing.objects.get(id=id)
+    except Thing.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+
+    if request.method == 'GET':
+        serializer = ThingSerializer(thing)
+        return Response(serializer.data)

@@ -21,8 +21,6 @@ from collection.serializers import ThingSerializer
 
 stripe.api_key = settings.STRIPE_SECRET
 
-stripe.api_key = settings.STRIPE_SECRET
-
 
 def index(request):
     things = Thing.objects.all()
@@ -304,7 +302,6 @@ def charge(request):
 
     messages.success(request, 'Upgraded your account!')
     return redirect('edit_thing', slug=thing.slug)
-<<<<<<< 38b1d1106d1e81f112213f20a55390801864c425
 
 
 @api_view(['GET'])
@@ -331,5 +328,3 @@ def api_thing_detail(request, id):
     if request.method == 'GET':
         serializer = ThingSerializer(thing)
         return Response(serializer.data)
-=======
->>>>>>> End of Chapter 9

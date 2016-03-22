@@ -28,7 +28,6 @@ here:
 * [Chapter 11](https://github.com/hellowebapp/hellowebapp-ic-code/tree/chapter-11)
 * [Chapter 12](https://github.com/hellowebapp/hellowebapp-ic-code/tree/chapter-12)
 * [Chapter 13](https://github.com/hellowebapp/hellowebapp-ic-code/tree/chapter-13)
-* [Chapter 14](https://github.com/hellowebapp/hellowebapp-ic-code/tree/chapter-14)
 
 # License
 

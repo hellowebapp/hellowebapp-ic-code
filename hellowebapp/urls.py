@@ -40,6 +40,8 @@ urlpatterns = [
     url(r'^browse/name/(?P<initial>[-\w]+)/$', 
         views.browse_by_name, name='browse_by_name'),
 
+    url(r'^charge/$', views.charge, name='charge'),
+
     # password reset urls
     url(r'^accounts/password/reset/$', password_reset, 
         {'template_name': 'registration/password_reset_form.html'}, 

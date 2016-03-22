@@ -146,3 +146,7 @@ ADMINS = [
 ]
 
 LOGIN_REDIRECT_URL = "home"
+
+# replace the below with your own keys 
+STRIPE_SECRET = 'YOUR TEST SECRET KEY'
+STRIPE_PUBLISHABLE = 'YOUR TEST PUBLISHABLE KEY'

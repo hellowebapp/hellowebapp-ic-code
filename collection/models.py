@@ -18,6 +18,8 @@ class Thing(Timestamp):
     description = models.TextField()
     slug = models.SlugField(unique=True)
     user = models.OneToOneField(User, blank=True, null=True)
+    upgraded = models.BooleanField(default=False)
+    stripe_id = models.CharField(max_length=255, blank=True)
 
     def __unicode__(self):
         return self.name

@@ -4,9 +4,12 @@ from django.contrib import admin
 from django.contrib.auth.views import PasswordChangeView, PasswordChangeDoneView, PasswordResetView, PasswordResetDoneView, PasswordResetConfirmView, PasswordResetCompleteView
 from django.views.generic import TemplateView, RedirectView
 from django.contrib.sitemaps.views import sitemap
+from django.views.generic import TemplateView, RedirectView
+from django.views.static import serve
+from django.urls import re_path
 
-from collection.backends import MyRegistrationView
 from collection import views
+from collection.backends import MyRegistrationView
 from collection.sitemap import ThingSitemap, StaticSitemap, HomepageSitemap
 
 sitemaps = {
@@ -59,3 +62,10 @@ urlpatterns = [
     path('accounts/', include('registration.backends.simple.urls')),
     path('admin/', include(admin.site.urls)),
 ]
+
+if settings.DEBUG:
+    urlpatterns += [
+        re_path(r'^media/(?P<path>.*)$', serve, {
+            'document_root': settings.MEDIA_ROOT,
+        }),
+    ]

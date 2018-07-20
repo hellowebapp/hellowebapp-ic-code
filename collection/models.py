@@ -18,10 +18,9 @@ class Thing(Timestamp):
     slug = models.SlugField(unique=True)
     user = models.OneToOneField(User, blank=True, null=True)
 
-    def __unicode__(self):
+    def __str__(self):
         return self.name
 
-    # new helper method
     def get_absolute_url(self):
         return "/things/%s/" % self.slug
 
@@ -48,5 +47,6 @@ def get_image_path(instance, filename):
     return '/'.join(['thing_images', instance.thing.slug, filename])
 
 class Upload(models.Model):
-    thing = models.ForeignKey(Thing, related_name="uploads")
+    thing = models.ForeignKey(Thing,
+        on_delete=models.CASCADE, related_name="uploads")
     image = models.ImageField(upload_to=get_image_path)

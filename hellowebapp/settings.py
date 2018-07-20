@@ -20,7 +20,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.9/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '#(#ubb%^)!6d-j7lgadv7rb@!s-528168$1$dxt@+64hocna68'
+SECRET_KEY = 'YOUR_SECRET_KEY'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -134,10 +134,10 @@ MEDIA_URL = '/media/'
 ACCOUNT_ACTIVATION_DAYS = 7
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-DEFAULT_FROM_EMAIL = 'testing@example.com' 
-EMAIL_HOST_USER = '' 
-EMAIL_HOST_PASSWORD = '' 
-EMAIL_USE_TLS = False 
+DEFAULT_FROM_EMAIL = 'testing@example.com'
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''
+EMAIL_USE_TLS = False
 EMAIL_PORT = 1025
 
 SERVER_EMAIL = 'app_email@mydomain.com'
@@ -147,6 +147,6 @@ ADMINS = [
 
 LOGIN_REDIRECT_URL = "home"
 
-# replace the below with your own keys 
+# replace the below with your own keys
 STRIPE_SECRET = 'YOUR TEST SECRET KEY'
 STRIPE_PUBLISHABLE = 'YOUR TEST PUBLISHABLE KEY'

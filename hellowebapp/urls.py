@@ -55,6 +55,9 @@ urlpatterns = [
     path('accounts/create_thing/',
         views.create_thing, name='registration_create_thing'),
 
+    path('api/things/', views.api_thing_list, name="api_thing_list"),
+    path('api/things/<id>/', views.api_thing_detail, name="api_thing_detail"),
+
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps},
         name='django.contrib.sitemaps.views.sitemap'),
 

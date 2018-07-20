@@ -24,8 +24,9 @@ class Social(models.Model):
 
     network = models.CharField(max_length=255, choices=SOCIAL_TYPES)
     username = models.CharField(max_length=255)
-    thing = models.ForeignKey(Thing, related_name="social_accounts")
-
+    thing = models.ForeignKey(Thing,
+        on_delete=CASCADE, related_name="social_accounts")
+    
     # where we're overriding the admin name
     class Meta:
         verbose_name_plural = "Social media links"

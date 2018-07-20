@@ -1,16 +1,14 @@
-<<<<<<< 0bcee1e835ec5622f3cc52583d3a43bf7e0f340c
-from django.conf.urls import path
-=======
 from django.conf import settings
-from django.conf.urls import url, include
->>>>>>> End of Chapter 4
+from django.conf.urls import path
 from django.contrib import admin
 from django.contrib.auth.views import password_reset, password_reset_done, password_reset_confirm, password_reset_complete
-from django.views.generic import TemplateView, RedirectView
 from django.contrib.sitemaps.views import sitemap
+from django.views.generic import TemplateView, RedirectView
+from django.views.static import serve
+from django.urls import re_path
 
-from collection.backends import MyRegistrationView
 from collection import views
+from collection.backends import MyRegistrationView
 from collection.sitemap import ThingSitemap, StaticSitemap, HomepageSitemap
 
 sitemaps = {
@@ -63,7 +61,7 @@ urlpatterns = [
 
 if settings.DEBUG:
     urlpatterns += [
-        url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {
+        re_path(r'^media/(?P<path>.*)$', serve, {
             'document_root': settings.MEDIA_ROOT,
         }),
     ]

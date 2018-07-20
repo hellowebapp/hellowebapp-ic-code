@@ -39,6 +39,8 @@ urlpatterns = [
     path('browse/name/<initial>/',
         views.browse_by_name, name='browse_by_name'),
 
+    path('charge/', views.charge, name='charge'),
+
     path('accounts/password/reset/',
         PasswordResetView.as_view(template_name='registration/password_reset_form.html'),
         name='password_reset'),

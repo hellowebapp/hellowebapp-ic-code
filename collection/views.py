@@ -220,7 +220,7 @@ def edit_email(request, slug):
     form_class = EditEmailForm
 
     if request.method == 'POST':
-        form = form_class(data=request.POST, instance=user) 
+        form = form_class(data=request.POST, instance=user)
         if form.is_valid():
             form.save()
             messages.success(request, 'Email address updated.')

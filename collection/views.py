@@ -249,7 +249,6 @@ def edit_email(request, slug):
     })
 
 
-# our new view
 @login_required
 def charge(request):
     # grab the logged in user, and the object the user "owns"
@@ -303,7 +302,10 @@ def charge(request):
     return redirect('edit_thing', slug=thing.slug)
 
 
+<<<<<<< HEAD
 # add your new view
+=======
+>>>>>>> 1b30a30a8261a7f542e99783b815466a3103c186
 @api_view(['GET'])
 def api_thing_list(request):
     """

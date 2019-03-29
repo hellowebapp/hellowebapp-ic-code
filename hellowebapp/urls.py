@@ -1,6 +1,6 @@
-from django.conf.urls import path
+from django.urls import path, include
 from django.contrib import admin
-from django.contrib.auth.views import password_reset, password_reset_done, password_reset_confirm, password_reset_complete
+from django.contrib.auth.views import PasswordChangeView, PasswordChangeDoneView, PasswordResetView, PasswordResetDoneView, PasswordResetConfirmView, PasswordResetCompleteView
 from django.views.generic import TemplateView, RedirectView
 
 from collection.backends import MyRegistrationView
@@ -23,15 +23,18 @@ urlpatterns = [
     path('browse/name/<initial>/',
         views.browse_by_name, name='browse_by_name'),
 
-    path('accounts/password/reset/', password_reset,
-        {'template_name': 'registration/password_reset_form.html'}, name="password_reset"),
-    path('accounts/password/reset/done/', password_reset_done,
-        {'template_name': 'registration/password_reset_done.html'}, name="password_reset_done"),
-    path('accounts/password/reset/<uidb64>/<token>/', password_reset_confirm,
-        {'template_name': 'registration/password_reset_confirm.html'}, name="password_reset_confirm"),
-    path('accounts/password/done/', password_reset_complete,
-        {'template_name': 'registration/password_reset_complete.html'},
-        name="password_reset_complete"),
+    path('accounts/password/reset/',
+        PasswordResetView.as_view(template_name='registration/password_reset_form.html'),
+        name='password_reset'),
+    path('accounts/password/reset/done/',
+        PasswordResetDoneView.as_view(template_name='registration/password_reset_done.html'),
+        name='password_reset_done'),
+    path('accounts/password/reset/<uidb64>/<token>/',
+        PasswordResetConfirmView.as_view(template_name='registration/password_reset_confirm.html'),
+        name='password_reset_confirm'),
+    path('accounts/password/done/',
+        PasswordResetDoneView.as_view(template_name='registration/password_reset_complete.html'),
+        name='password_reset_complete'),
 
     path('accounts/register/',
         MyRegistrationView.as_view(), name='registration_register'),

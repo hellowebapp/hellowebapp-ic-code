@@ -16,7 +16,7 @@ here:
 ## Next chapter
 
 Next chapter:
-[https://github.com/hellowebapp/HelloWebApp-IC-Code/tree/chapter-6](https://github.com/hellowebapp/HelloWebApp-IC-Code/tree/chapter-6)
+[https://github.com/hellowebapp/HelloWebApp-IC-Code/tree/chapter-7](https://github.com/hellowebapp/HelloWebApp-IC-Code/tree/chapter-7)
 
 # License
 

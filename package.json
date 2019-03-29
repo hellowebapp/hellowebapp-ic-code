@@ -1,0 +1,27 @@
+{
+  "name": "hellowebapp-ic-code",
+  "version": "1.0.0",
+  "description": "My app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hellowebapp/hellowebapp-ic-code.git"
+  },
+  "author": "Tracy Osborn",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hellowebapp/hellowebapp-ic-code/issues"
+  },
+  "homepage": "https://github.com/hellowebapp/hellowebapp-ic-code#readme",
+  "devDependencies": {
+    "autoprefixer": "^6.3.3",
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.0",
+    "gulp-postcss": "^6.1.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^2.2.0"
+  }
+}

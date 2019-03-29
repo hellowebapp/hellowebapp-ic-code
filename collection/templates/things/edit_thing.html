@@ -14,4 +14,22 @@
     <a href="{% url 'edit_thing_uploads' slug=thing.slug %}">
         Edit images
     </a>
+
+    {% if not thing.upgraded %}
+    <h2>Upgrade to a premium subscription?</h2>
+    <form action="{% url 'charge' %}" method="POST">
+        {% csrf_token %}
+        <script src="https://checkout.stripe.com/checkout.js"
+            class="stripe-button"
+            data-key="{{ key }}"
+            data-name="Your App name"
+            data-description="Premium subscription ($19/month)"
+            data-amount="1900"
+            data-allow-remember-me="false"
+            data-label="Subscribe">
+        </script>
+    </form>
+    {% else %}
+    <p>Thanks for being an upgraded member of our app!</p>
+    {% endif %}
 {% endblock content %}

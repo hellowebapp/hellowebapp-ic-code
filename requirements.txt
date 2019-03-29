@@ -5,3 +5,4 @@ hellowebapp-deploy
 psycopg2==2.7.3.2
 Pillow==5.1.0
 libsass==0.10.1
+stripe==1.31.0

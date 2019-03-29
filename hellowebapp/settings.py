@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sitemaps',
     'registration',
+    'rest_framework',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -150,3 +151,15 @@ LOGIN_REDIRECT_URL = "home"
 # replace the below with your own keys
 STRIPE_SECRET = 'YOUR TEST SECRET KEY'
 STRIPE_PUBLISHABLE = 'YOUR TEST PUBLISHABLE KEY'
+
+REST_FRAMEWORK = {
+    # Use Django's standard 'django.contrib.auth' permissions, 
+    # or allow read-only access for unauthenticated users. 
+    'DEFAULT_PERMISSION_CLASSES': [
+        # we're going to use this because we're just showing data
+        'rest_framework.permissions.AllowAny',
+        # BUT use this one or another restricted permission if you 
+        # update your API to allow update and deleting
+        # 'rest_framework.permissions.IsAuthenticated',
+    ],
+}

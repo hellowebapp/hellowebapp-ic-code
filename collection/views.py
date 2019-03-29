@@ -8,7 +8,7 @@ from django.template import Context
 from django.core.mail import mail_admins
 from django.contrib import messages
 
-from collection.forms import ThingForm, ContactForm, ThingUploadForm
+from collection.forms import ThingForm, ContactForm, ThingUploadForm, EditEmailForm
 from collection.models import Thing, Upload
 
 
